@@ -1,0 +1,26 @@
+@import 'app-theme.scss';
+body {
+    font-family: 'Roboto', sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.dialog {
+    width: 300px;
+}
+
+.dialog md-input {
+    width: 100%;
+}
+
+.dialog md-card-actions {
+    margin-bottom: -20px;
+}

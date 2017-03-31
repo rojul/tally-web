@@ -1,0 +1,11 @@
+.euro-zero {
+    color: rgba(0, 0, 0, 0.54);
+}
+
+.euro-plus {
+    color: #4caf50;
+}
+
+.euro-minus {
+    color: #f44336;
+}

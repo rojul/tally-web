@@ -1,0 +1,16 @@
+<fieldset [disabled]="loading">
+    <md-card>
+        <md-card-title>Aufladen</md-card-title>
+        <md-card-content>
+            <div *ngFor="let charge of charges">
+                <euro-input [(ngModel)]="charge.value" placeholder="Betrag"></euro-input>
+                <button md-icon-button (click)="remove(charge)"><md-icon>delete</md-icon></button>
+            </div>
+            <button md-icon-button (click)="create()"><md-icon>add</md-icon></button>
+        </md-card-content>
+        <md-card-actions align="end">
+            <button md-button color="primary" (click)="cancel()">ABBRECHEN</button>
+            <button md-raised-button color="accent" (click)="save()" [disabled]="!isValid() || !isChanged()">SPEICHERN</button>
+        </md-card-actions>
+    </md-card>
+</fieldset>

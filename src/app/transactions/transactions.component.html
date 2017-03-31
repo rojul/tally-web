@@ -1,0 +1,46 @@
+<app-nav [backTo]="['../']" [loading]="loading">
+    <div class="container" infinite-scroll (scrolled)="getTransactions()">
+        <md-card>
+            <md-card-title class="alignleft">Transaktionen</md-card-title>
+            <md-card-title class="alignright">
+                Gesamt:
+                <euro [value]="balance"></euro>
+            </md-card-title>
+            <div style="clear: both;"></div>
+            <md-card-content>
+                <table>
+                    <tr>
+                        <th>Zeit</th>
+                        <th class="right">Davor</th>
+                        <th class="right">Betrag</th>
+                        <th class="right">Danach</th>
+                        <th class="right"></th>
+                    </tr>
+                    <tr *ngFor="let transaction of transactions">
+                        <td>
+                            {{ (transaction.created | amFromUnix) | amDateFormat:'DD.MM.YYYY HH:mm:ss'}}
+                        </td>
+                        <td class="right">
+                            <euro [value]="transaction.before"></euro>
+                        </td>
+                        <td class="right">
+                            <euro [value]="transaction.difference" [sign]="true"></euro>
+                        </td>
+                        <td class="right">
+                            <euro [value]="transaction.after"></euro>
+                        </td>
+                        <td class="right material-icons delete-icon" (click)="deleteTransaction(transaction.id)">
+                            delete
+                        </td>
+                    </tr>
+                    <tr *ngIf="transactions.length === 0 && !loading">
+                        <td colspan="5">
+                            <md-card-subtitle align="center">Noch keine Transaktionen</md-card-subtitle>
+                        </td>
+                    </tr>
+                </table>
+                <button *ngIf="!allLoaded && !loading" md-button (click)="getTransactions()">MEHR ANZEIGEN</button>
+            </md-card-content>
+        </md-card>
+    </div>
+</app-nav>

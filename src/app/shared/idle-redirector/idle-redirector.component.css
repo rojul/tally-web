@@ -1,0 +1,14 @@
+div {
+    background: rgba(0, 0, 0, .7);
+    z-index: 99999;
+    color: rgba(255, 255, 255, .8);
+    padding: 10px 15px;
+    margin: 0 auto;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 15%;
+    max-width: 40%;
+    border-radius: 3px;
+}

@@ -1,0 +1,20 @@
+md-card {
+    margin: 12px;
+}
+
+.metrics-card {
+    display: flex;
+}
+
+.metrics-card .metric {
+    flex: 1;
+    text-align: center;
+}
+
+.metric .value {
+    font-size: 1.2rem;
+}
+
+canvas {
+    height: 250px !important;
+}

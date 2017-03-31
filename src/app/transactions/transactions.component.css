@@ -1,0 +1,47 @@
+table {
+    width: 100%;
+}
+
+md-card-title {
+    margin-top: 0 !important;
+}
+
+th,
+td {
+    text-align: left;
+}
+
+th.right,
+td.right {
+    text-align: right;
+    width: 1%;
+    white-space: nowrap;
+    padding: 6px;
+}
+
+md-card {
+    margin: 12px;
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+md-card {}
+
+.container {
+    margin: 0 auto;
+    max-width: 30em;
+}
+
+.delete-icon {
+    font-size: 17px;
+}
+
+.delete-icon:hover {
+    color: #666;
+}

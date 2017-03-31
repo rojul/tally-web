@@ -1,0 +1,10 @@
+<div class="dialog">
+    <md-card-title>Benutzer editieren</md-card-title>
+    <md-card-content>
+        <name-input [(ngModel)]="name" [length]="{ min: 3, max: 20 }"></name-input>
+    </md-card-content>
+    <md-card-actions align="end">
+        <button md-button color="primary" (click)="dialogRef.close()">ABBRECHEN</button>
+        <button md-raised-button color="accent" [disabled]="!name" (click)="clickOk()">OK</button>
+    </md-card-actions>
+</div>

@@ -1,0 +1,36 @@
+<app-nav [loading]="loading">
+    <div toolbar>
+        <button md-icon-button [disabled]="searchActive" (click)="toggleSearch()">
+            <md-icon>search</md-icon>
+        </button>
+    </div>
+
+    <md-toolbar class="search-bar" *ngIf="searchActive" color="primary">
+        <!--(keydown.control.esc)="hideSearch()"-->
+        <!--md-toolbar-row-->
+        <md-input #searchInput class="demo-fill-remaining" [(ngModel)]="searchValue"></md-input>
+        <button md-icon-button (click)="toggleSearch()">
+            <md-icon>clear</md-icon>
+        </button>
+    </md-toolbar>
+
+    <button md-fab (click)="openCreateUserDialog()" [disabled]="createUserDialogRef">
+        <md-icon>person_add</md-icon>
+    </button>
+
+    <div class="user-container">
+        <div class="stretch">
+            <md-card *ngFor="let user of users" [hidden]="!user.name.toLowerCase().includes(searchValue.toLowerCase())" [routerLink]="['/users', user.id]">
+                <md-card-title>{{user.name}}</md-card-title>
+                <md-card-subtitle>
+                    <div>
+                        <euro [value]="user.balance"></euro>
+                    </div>
+                    <div>
+                        <time>{{ (user.active | amFromUnix) | amTimeAgo }}</time>
+                    </div>
+                </md-card-subtitle>
+            </md-card>
+        </div>
+    </div>
+</app-nav>

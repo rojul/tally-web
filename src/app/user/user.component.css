@@ -1,0 +1,79 @@
+md-card {
+    margin: 6px;
+}
+
+.charge-wrapper,
+.pay-wrapper {
+    margin: -4px;
+}
+
+.charge-card {
+    margin-top: 12px;
+}
+
+.charge-wrapper button,
+.pay-wrapper button {
+    background: #4caf50;
+    color: #fff;
+    min-width: 100px;
+    height: 50px;
+    margin: 4px;
+    transition: background .2s linear;
+}
+
+.pay-wrapper button {
+    background: #f44336;
+}
+
+.charge-wrapper button[disabled] {
+    background: #a6d7a8;
+}
+
+.pay-wrapper button[disabled] {
+    background: #faa19a
+}
+
+.wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    padding: 6px;
+}
+
+.info-card {
+    width: 100%;
+    box-sizing: border-box;
+    /* TODO not working */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.pay-charge,
+.transactions-card {
+    flex: 1 100%;
+    width: 100%;
+}
+
+@media all and (min-width: 800px) {
+    .pay-charge {
+        flex: 1 0px;
+        order: 1;
+    }
+    .transactions-card {
+        order: 2;
+        flex: 1 auto;
+        max-width: 300px;
+    }
+}
+
+.alignleft {
+    float: left;
+}
+
+.alignright {
+    float: right;
+}
+
+md-card-title {
+    margin-top: 0 !important;
+}

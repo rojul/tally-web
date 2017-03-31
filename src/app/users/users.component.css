@@ -1,0 +1,53 @@
+[md-fab] {
+    /* TODO dont move when scrolling */
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 1;
+}
+
+.user-container {
+    display: flex;
+    flex-flow: row wrap;
+    flex-grow: 1;
+    flex-wrap: wrap;
+    padding: 6px;
+}
+
+.user-container md-card {
+    box-sizing: border-box;
+    margin: 6px;
+    width: 180px;
+}
+
+.user-container .stretch {
+    display: flex;
+    align-content: stretch;
+    flex-wrap: wrap;
+    /* TODO not working */
+}
+
+.user-container md-card-title {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.search-bar {
+    flex: 1 1 auto;
+}
+
+.demo-fill-remaining {
+    /* TODO rename*/
+    flex: 1 1 auto;
+}
+
+[hidden] {
+    display: none;
+}
+
+.search-bar {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+}
