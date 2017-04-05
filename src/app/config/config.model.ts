@@ -9,4 +9,7 @@ export class Config {
     productNameLengthMax: number;
     transactionValue: minMax;
     transactionsLimit: number;
+    title: string;
+    theme: string;
+    transactionMaxValue: number;
 }

@@ -21,7 +21,7 @@ import { UserComponent, UserRemoveDialogComponent, UserEditDialogComponent } fro
 import { TransactionsComponent } from './transactions';
 import { MetricsComponent } from './metrics';
 import { ApiService } from './api.service';
-import { ConfigComponent, ProductConfigComponent, ChargeConfigComponent } from './config';
+import { ConfigComponent, ProductConfigComponent, ChargeConfigComponent, GeneralConfigComponent } from './config';
 
 @NgModule({
   declarations: [
@@ -44,7 +44,8 @@ import { ConfigComponent, ProductConfigComponent, ChargeConfigComponent } from '
     UserCreateDialogComponent,
     EuroInputComponent,
     IdleRedirectorComponent,
-    NameInputComponent
+    NameInputComponent,
+    GeneralConfigComponent
   ],
   imports: [
     BrowserModule,

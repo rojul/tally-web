@@ -1,0 +1,20 @@
+<fieldset [disabled]="loading">
+    <md-card>
+        <md-card-title>Allgemeine Einstellungen</md-card-title>
+        <md-card-content>
+            <div>
+                <md-input [(ngModel)]="config.title" placeholder="Titel"></md-input>
+            </div>
+            <div>
+                <p>Theme:</p>
+                <md-select [(ngModel)]="config.theme">
+                    <md-option *ngFor="let theme of themes" [value]="theme.id">{{ theme.name }}</md-option>
+                </md-select>
+            </div>
+        </md-card-content>
+        <md-card-actions align="end">
+            <button md-button color="primary" (click)="cancel()">ABBRECHEN</button>
+            <button md-raised-button color="accent" (click)="save()" [disabled]="!isChanged()">SPEICHERN</button>
+        </md-card-actions>
+    </md-card>
+</fieldset>

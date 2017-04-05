@@ -15,7 +15,7 @@ import { Metrics } from './metrics';
 export class ApiService {
   
   private url = environment.apiUrl;
-  private static configCache: any;
+  private static configCache: Config;
 
   constructor(
     private http: Http,
@@ -114,9 +114,7 @@ export class ApiService {
   }
 
   putRechargeAmounts(value: number[]): Observable<void> {
-    return this.http.put(this.url + '/config/recharge', { value })
-      .map(res => res.json())
-      .catch(e => this.handleError(e, this))
+    return this.putConfigValue('recharge', value)
   }
 
   bulkProductUpdate(patch: any): Promise<any> {
@@ -141,10 +139,41 @@ export class ApiService {
         resolve(results)
       }).catch(err => {
         console.log('products bulk update error:', err)
-        this.say('Fehler beim update der Produkte')
+        this.say('Fehler beim Update der Produkte')
         reject(err)
       })
     })
+  }
+
+  updateGeneralConfig(config: any): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let promises: Promise<any>[] = [];
+      for (let key of Object.keys(config)) {
+        let value = config[key];
+        if (value !== null) {
+          promises.push(this.http.put(this.url + '/config/' + key, { value })
+            .map(res => res.json())
+            .toPromise())
+        } else {
+          promises.push(this.http.delete(this.url + '/config/' + key)
+            .map(res => res.json())
+            .toPromise())
+        }
+      }
+      Promise.all(promises).then(results => {
+        resolve(results)
+      }).catch(err => {
+        console.log('config bulk update error:', err)
+        this.say('Fehler beim Update der Einstellungen')
+        reject(err)
+      })
+    })
+  }
+
+  private putConfigValue(key: string, value: any): Observable<void> {
+    return this.http.put(this.url + '/config/' + key, { value })
+      .map(res => res.json())
+      .catch(e => this.handleError(e, this))
   }
 
   private handleError(res: any, that: ApiService) {
