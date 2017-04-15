@@ -1,10 +1,10 @@
-import { TallyPage } from './app.po';
+import { TallyWebPage } from './app.po';
 
-describe('tally App', function() {
-  let page: TallyPage;
+describe('tally-web App', () => {
+  let page: TallyWebPage;
 
   beforeEach(() => {
-    page = new TallyPage();
+    page = new TallyWebPage();
   });
 
   it('should display message saying app works', () => {

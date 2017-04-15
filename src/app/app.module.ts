@@ -9,11 +9,11 @@ import * as moment from 'moment';
 import 'moment/min/locales';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import 'chart.js/src/chart';
-import { InfiniteScrollModule } from 'angular2-infinite-scroll';
 import { NgIdleModule } from '@ng-idle/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing } from './app.routing';
-import { EuroComponent, NavComponent, EuroInputComponent, IdleRedirectorComponent, NameInputComponent } from './shared';
+import { EuroComponent, NavComponent, EuroInputComponent, IdleRedirectorComponent, NameInputComponent, FocusDirective } from './shared';
 import { AppComponent } from './app';
 import { PageNotFoundComponent } from './page-not-found';
 import { UsersComponent, UserCreateDialogComponent } from './users';
@@ -45,7 +45,8 @@ import { ConfigComponent, ProductConfigComponent, ChargeConfigComponent, General
     EuroInputComponent,
     IdleRedirectorComponent,
     NameInputComponent,
-    GeneralConfigComponent
+    GeneralConfigComponent,
+    FocusDirective
   ],
   imports: [
     BrowserModule,
@@ -55,8 +56,8 @@ import { ConfigComponent, ProductConfigComponent, ChargeConfigComponent, General
     MaterialModule.forRoot(),
     MomentModule,
     ChartsModule,
-    InfiniteScrollModule,
-    NgIdleModule.forRoot()
+    NgIdleModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     ApiService,

@@ -1,6 +1,5 @@
-import { Component, forwardRef, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ChangeDetectorRef, ViewChild, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { MdInput } from '@angular/material';
 
 @Component({
   selector: 'euro-input',
@@ -13,13 +12,13 @@ import { MdInput } from '@angular/material';
   styleUrls: ['./euro-input.component.css']
 })
 export class EuroInputComponent implements ControlValueAccessor {
-  @ViewChild('elem') elem: MdInput;
   @Input() placeholder: string;
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
   private static valRegex = /^\d*[.,]?\d{0,2}/;
   private _value = '';
+  elemFocusEventEmitter = new EventEmitter<boolean>();
 
   get value() {
     return this._value;
@@ -48,8 +47,8 @@ export class EuroInputComponent implements ControlValueAccessor {
     }
   }
 
-  focus() {
-    this.elem.focus();
+  public focus() {
+    this.elemFocusEventEmitter.emit(true);
   }
 
   onBlur() {

@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { MdDialog, MdDialogConfig, MdDialogRef, MdInput } from '@angular/material';
+import { MdDialog, MdDialogConfig, MdDialogRef, MdInputDirective } from '@angular/material';
 
 import { Transaction } from '../transactions';
 import { Wallet } from './wallet.model';
@@ -16,7 +16,7 @@ import { UserEditDialogComponent } from './user-edit-dialog';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  @ViewChild('customRechargeInput') customRechargeInput: MdInput;
+  @ViewChild('customRechargeInput') customRechargeInput: MdInputDirective;
 
   removeUserDialogRef: MdDialogRef<UserRemoveDialogComponent>;
   editUserDialogRef: MdDialogRef<UserEditDialogComponent>;

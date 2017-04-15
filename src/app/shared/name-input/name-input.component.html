@@ -1,1 +1,3 @@
-<md-input #elem [dividerColor]="getValue() ? '' : 'warn'" [(ngModel)]="value" (blur)="onBlur()" placeholder="Name"></md-input>
+<md-input-container [color]="getValue() ? '' : 'warn'" mdSuffix="&nbsp;€">
+    <input mdInput [(ngModel)]="value" (blur)="onBlur()" [focus]="elemFocusEventEmitter" placeholder="Name">
+</md-input-container>

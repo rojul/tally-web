@@ -1,6 +1,5 @@
-import { Component, forwardRef, Input, ChangeDetectorRef, ViewChild } from '@angular/core';
+import { Component, forwardRef, Input, ChangeDetectorRef, ViewChild, EventEmitter } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import { MdInput } from '@angular/material';
 
 class MinMaxObject {
   min: number;
@@ -18,12 +17,12 @@ class MinMaxObject {
   styleUrls: ['./name-input.component.css']
 })
 export class NameInputComponent implements ControlValueAccessor {
-  @ViewChild('elem') elem: MdInput;
   @Input() length: MinMaxObject;
 
   private onTouchedCallback: () => void = () => { };
   private onChangeCallback: (_: any) => void = () => { };
   private _value = '';
+  elemFocusEventEmitter = new EventEmitter<boolean>();
 
   get value() {
     return this._value;
@@ -48,8 +47,8 @@ export class NameInputComponent implements ControlValueAccessor {
     }
   }
 
-  focus() {
-    this.elem.focus();
+  public focus() {
+    this.elemFocusEventEmitter.emit(true);
   }
 
   onBlur() {

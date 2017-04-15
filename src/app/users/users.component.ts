@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MdInput, MdDialogRef, MdDialog } from '@angular/material';
+import { Component, OnInit, ViewChild, ElementRef, EventEmitter } from '@angular/core';
+import { MdDialogRef, MdDialog } from '@angular/material';
 
 import { User } from './user.model';
 import { ApiService } from '../api.service';
@@ -12,10 +12,10 @@ import { UserCreateDialogComponent } from './user-create-dialog';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-  @ViewChild('searchInput') searchInput: MdInput;
 
   searchActive: boolean = false;
   searchValue: string = '';
+  searchFocusEventEmitter = new EventEmitter<boolean>();
   users: User[] = [];
   createUserDialogRef: MdDialogRef<UserCreateDialogComponent>;
   loading = true;
@@ -41,7 +41,7 @@ export class UsersComponent implements OnInit {
     this.searchActive = !this.searchActive;
     if (this.searchActive) {
       setTimeout(() => { // HACK
-        this.searchInput.focus();
+        this.searchFocusEventEmitter.emit(true);
       }, 0)
     } else
       this.searchValue = '';

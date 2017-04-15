@@ -8,7 +8,9 @@
     <md-toolbar class="search-bar" *ngIf="searchActive" color="primary">
         <!--(keydown.control.esc)="hideSearch()"-->
         <!--md-toolbar-row-->
-        <md-input #searchInput class="demo-fill-remaining" [(ngModel)]="searchValue"></md-input>
+        <md-input-container class="demo-fill-remaining" >
+            <input mdInput [(ngModel)]="searchValue" [focus]="searchFocusEventEmitter">
+        </md-input-container>
         <button md-icon-button (click)="toggleSearch()">
             <md-icon>clear</md-icon>
         </button>

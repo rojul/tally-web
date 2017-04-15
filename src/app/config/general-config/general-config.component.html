@@ -3,7 +3,9 @@
         <md-card-title>Allgemeine Einstellungen</md-card-title>
         <md-card-content>
             <div>
-                <md-input [(ngModel)]="config.title" placeholder="Titel"></md-input>
+                <md-input-container>
+                    <input mdInput [(ngModel)]="config.title" placeholder="Titel">
+                </md-input-container>
             </div>
             <div>
                 <p>Theme:</p>

@@ -1,4 +1,4 @@
-@import '~@angular/material/core/theming/palette';
-$primary: md-palette($md-brown);
-$accent: md-palette($md-amber, A200, A100, A400);
-$warn: md-palette($md-red);
+@import '~@angular/material/theming';
+$primary: mat-palette($mat-brown);
+$accent: mat-palette($mat-amber, A200, A100, A400);
+$warn: mat-palette($mat-red);
