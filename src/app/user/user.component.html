@@ -14,7 +14,7 @@
             <md-card-title class="alignleft">Hallo {{ wallet.name }}</md-card-title>
             <md-card-title class="alignright">
                 Gesamt:
-                <euro [value]="wallet.balance"></euro>
+                <app-euro [value]="wallet.balance"></app-euro>
             </md-card-title>
             <div style="clear: both; width: 100%; height: 5px;"></div>
             <md-card-subtitle style="width: 100%;">
@@ -33,23 +33,23 @@
                 <md-card-content class="pay-wrapper">
                     <button md-raised-button *ngFor="let product of products" (click)="newTransaction(product)" [disabled]="!orderActive">
                         <span>{{product.name}}</span>
-                        <euro class="secondary" [value]="product.price" [colored]="false"></euro>
+                        <app-euro class="secondary" [value]="product.price" [colored]="false"></app-euro>
                     </button>
                 </md-card-content>
             </md-card>
 
-            <md-card class="charge-card" *ngIf="wallet">
+            <md-card class="charge-card" *ngIf="config">
                 <md-card-title>Aufladen</md-card-title>
                 <md-card-content *ngIf="!customChargeShowing" class="charge-wrapper">
-                    <button md-raised-button *ngFor="let value of chargeDefaults" (click)="charge(value)" [disabled]="!orderActive">
-                        <euro [value]="value" [colored]="false"></euro>
+                    <button md-raised-button *ngFor="let value of config.recharge" (click)="charge(value)" [disabled]="!orderActive">
+                        <app-euro [value]="value" [colored]="false"></app-euro>
                     </button>
                     <button md-raised-button (click)="toggleCustomRecharge()" [disabled]="!orderActive">
                         <span>?</span>
                     </button>
                 </md-card-content>
                 <md-card-content *ngIf="customChargeShowing">
-                    <euro-input #customRechargeInput [(ngModel)]="customChargeValue" placeholder="Wert"></euro-input>
+                    <app-euro-input #customRechargeInput [(ngModel)]="customChargeValue" placeholder="Wert"></app-euro-input>
                 </md-card-content>
                 <md-card-actions align="end" *ngIf="customChargeShowing">
                     <button md-button color="primary" (click)="toggleCustomRecharge()">ABBRECHEN</button>
@@ -66,10 +66,10 @@
                 <md-list dense>
                     <md-list-item *ngFor="let transaction of wallet.transactions">
                         <h3 md-line>
-                            <euro [value]="transaction.value"></euro>
+                            <app-euro [value]="transaction.value"></app-euro>
                         </h3>
                         <span md-line class="secondary"><time>{{ (transaction.created | amFromUnix) | amTimeAgo }}</time></span>
-                        <button md-icon-button (click)="deleteTransaction(transaction.id)">
+                        <button md-icon-button (click)="openRemoveTransactionDialog(transaction.id)">
                             <md-icon>delete</md-icon>
                         </button>
                     </md-list-item>
@@ -79,9 +79,9 @@
                 </md-list>
             </md-card-content>
             <md-card-actions align="end">
-                <button md-button [routerLink]="[ '/users', wallet.id, 'transactions'] ">MEHR</button>
+                <button md-button [routerLink]="['/users', wallet.id, 'transactions']">MEHR</button>
             </md-card-actions>
         </md-card>
     </div>
 </app-nav>
-<app-idle-redirector></app-idle-redirector>
+<app-idle-redirector [fastRedirect]="fastRedirectEventEmitter"></app-idle-redirector>

@@ -13,6 +13,15 @@
                     <md-option *ngFor="let theme of themes" [value]="theme.id">{{ theme.name }}</md-option>
                 </md-select>
             </div>
+            <br>
+            <div>
+                <p>Gewinnchance bei allen Produkten mit <md-icon>sentiment_very_satisfied</md-icon>:</p>
+                <md-input-container>
+                    <div mdPrefix>1:</div>
+                    <input mdInput [(ngModel)]="config.funChanceToWin" placeholder="Gewinnchance" type="number" min="0" max="10000" step="1">
+                </md-input-container>
+                <div><small>{{ getFunChanceToWinSubtitle() }} Chance zu gewinnen</small></div>
+            </div>
         </md-card-content>
         <md-card-actions align="end">
             <button md-button color="primary" (click)="cancel()">ABBRECHEN</button>

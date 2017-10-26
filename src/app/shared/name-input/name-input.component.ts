@@ -7,7 +7,7 @@ class MinMaxObject {
 }
 
 @Component({
-  selector: 'name-input',
+  selector: 'app-name-input',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
     useExisting: forwardRef(() => NameInputComponent),
@@ -19,26 +19,28 @@ class MinMaxObject {
 export class NameInputComponent implements ControlValueAccessor {
   @Input() length: MinMaxObject;
 
-  private onTouchedCallback: () => void = () => { };
-  private onChangeCallback: (_: any) => void = () => { };
   private _value = '';
   elemFocusEventEmitter = new EventEmitter<boolean>();
+  private onTouchedCallback: () => void = () => { };
+  private onChangeCallback: (_: any) => void = () => { };
 
   get value() {
     return this._value;
   }
 
   set value(value) {
-    if (value === this._value)
-      return
-    this._value = value
+    if (value === this._value) {
+      return;
+    }
+    this._value = value;
     this.onChangeCallback(this.getValue());
   }
 
   getValue() {
-    let value = this._value.trim().replace(/ +(?= )/g,'');
-    if (value.length >= this.length.min && value.length <= this.length.max)
-      return value
+    const value = this._value.trim().replace(/ +(?= )/g, '');
+    if (value.length >= this.length.min && value.length <= this.length.max) {
+      return value;
+    }
   }
 
   writeValue(value: any) {

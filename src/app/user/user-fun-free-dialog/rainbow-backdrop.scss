@@ -1,0 +1,48 @@
+// $rainbow_segments: 10;
+// @keyframes rainbowbackground {
+//   @for $i from 0 through $rainbow_segments {
+//     #{$i/$rainbow_segments*100}% {
+//       background: adjust-hue(red, $i/$rainbow_segments*360);
+//     }
+//   }
+// }
+
+@keyframes rainbowbackground {
+  0% {
+    background: red;
+  }
+  10% {
+    background: #ff9900;
+  }
+  20% {
+    background: #ccff00;
+  }
+  30% {
+    background: #33ff00;
+  }
+  40% {
+    background: #00ff66;
+  }
+  50% {
+    background: cyan;
+  }
+  60% {
+    background: #0066ff;
+  }
+  70% {
+    background: #3300ff;
+  }
+  80% {
+    background: #cc00ff;
+  }
+  90% {
+    background: #ff0099;
+  }
+  100% {
+    background: red;
+  }
+}
+
+.rainbow-backdrop {
+    animation: rainbowbackground 7s infinite;
+}

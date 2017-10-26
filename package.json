@@ -1,13 +1,13 @@
 {
   "name": "tally-web",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --aot --prod",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --format stylish",
     "e2e": "ng e2e"
   },
   "private": true,

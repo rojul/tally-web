@@ -1,24 +1,18 @@
 <app-nav [loading]="loading">
     <div toolbar>
-        <button md-icon-button [disabled]="searchActive" (click)="toggleSearch()">
+        <button md-icon-button (click)="toggleSearch()">
             <md-icon>search</md-icon>
         </button>
     </div>
 
     <md-toolbar class="search-bar" *ngIf="searchActive" color="primary">
-        <!--(keydown.control.esc)="hideSearch()"-->
-        <!--md-toolbar-row-->
         <md-input-container class="demo-fill-remaining" >
-            <input mdInput [(ngModel)]="searchValue" [focus]="searchFocusEventEmitter">
+            <input mdInput [(ngModel)]="searchValue" [appFocus]="searchFocusEventEmitter">
         </md-input-container>
         <button md-icon-button (click)="toggleSearch()">
             <md-icon>clear</md-icon>
         </button>
     </md-toolbar>
-
-    <button md-fab (click)="openCreateUserDialog()" [disabled]="createUserDialogRef">
-        <md-icon>person_add</md-icon>
-    </button>
 
     <div class="user-container">
         <div class="stretch">
@@ -26,7 +20,7 @@
                 <md-card-title>{{user.name}}</md-card-title>
                 <md-card-subtitle>
                     <div>
-                        <euro [value]="user.balance"></euro>
+                        <app-euro [value]="user.balance"></app-euro>
                     </div>
                     <div>
                         <time>{{ (user.active | amFromUnix) | amTimeAgo }}</time>
@@ -35,4 +29,8 @@
             </md-card>
         </div>
     </div>
+
+    <button md-fab (click)="openCreateUserDialog()" [disabled]="createUserDialogRef">
+        <md-icon>person_add</md-icon>
+    </button>
 </app-nav>

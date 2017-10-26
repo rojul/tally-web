@@ -5,7 +5,7 @@ import { EuroComponent } from './euro.component';
 
 describe('Component: Euro', () => {
   it('should create an instance', () => {
-    let component = new EuroComponent();
+    const component = new EuroComponent();
     expect(component).toBeTruthy();
   });
 });

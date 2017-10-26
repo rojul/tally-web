@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
-import { ApiService } from '../api.service'
-import { Metrics } from './metrics.model'
-import { MetricsDate } from './metrics-date.model'
+import { ApiService } from '../api.service';
+import { Metrics } from './metrics.model';
+import { MetricsDate } from './metrics-date.model';
 import { Chart } from './chart.model';
 
 @Component({
@@ -23,7 +23,7 @@ export class MetricsComponent implements OnInit {
         stacked: true,
       }]
     }
-  }
+  };
   chartLabels: string[] = [];
   charts: Chart[] = [];
   colors: any[] = [];
@@ -34,7 +34,7 @@ export class MetricsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadMetrics()
+    this.loadMetrics();
   }
 
   loadMetrics() {
@@ -42,18 +42,18 @@ export class MetricsComponent implements OnInit {
     this.apiService.getMetrics().subscribe(
       metrics => {
         this.metrics = metrics;
-        metrics.days = this.transformBalance(metrics.days)
+        metrics.days = this.transformBalance(metrics.days);
         this.chartLabels = this.getLabels(metrics.days);
         this.charts = [
           this.balanceToChart(metrics.days),
           this.usersToChart(metrics.days),
           this.transactionsToChart(metrics.days)
-        ]
+        ];
         this.loading = false;
       },
       err => {
         this.loading = false;
-      })
+      });
   }
 
   private balanceToChart(days: MetricsDate[]): Chart {
@@ -88,36 +88,35 @@ export class MetricsComponent implements OnInit {
 
   private getLabels(days: MetricsDate[]): string[] {
     return days.map(day => {
-      return moment.unix(day.date).format('DD.MM.YYYY')
-    })
+      return moment.unix(day.date).format('DD.MM.YYYY');
+    });
   }
 
   private transformBalance(days: MetricsDate[]) {
     days.map(day => {
-      day.chargeBalance /= 100
-      day.payBalance = -day.payBalance / 100
-      return day
-    })
-    return days
+      day.chargeBalance /= 100;
+      day.payBalance = -day.payBalance / 100;
+      return day;
+    });
+    return days;
   }
 
   private chartSkeleton(days: MetricsDate[], title: string, datasets: string[], colors: string[], props: string[]) {
-    let chart: Chart = {
+    const chart: Chart = {
       title,
       datasets: datasets.map(label => {
-        return { data: [], label }
+        return { data: [], label };
       }),
       colors: colors.map(backgroundColor => {
-        return { backgroundColor }
+        return { backgroundColor };
       })
-    }
+    };
     props.forEach((prop, i) => {
       days.forEach(day => {
-        chart.datasets[i].data.push(day[props[i]])
-      })
-    })
+        chart.datasets[i].data.push(day[props[i]]);
+      });
+    });
     return chart;
   }
 
 }
-

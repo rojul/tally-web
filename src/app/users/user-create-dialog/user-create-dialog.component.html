@@ -1,7 +1,7 @@
 <div class="dialog">
     <md-card-title>Neuen Nutzer anlegen</md-card-title>
     <md-card-content>
-        <name-input [(ngModel)]="name" [length]="{ min: 3, max: 20 }"></name-input>
+        <app-name-input [(ngModel)]="name" [length]="{ min: 3, max: 20 }"></app-name-input>
     </md-card-content>
     <md-card-actions align="end">
         <button md-button color="primary" (click)="dialogRef.close()">ABBRECHEN</button>

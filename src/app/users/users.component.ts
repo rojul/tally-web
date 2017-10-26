@@ -13,13 +13,13 @@ import { UserCreateDialogComponent } from './user-create-dialog';
 })
 export class UsersComponent implements OnInit {
 
-  searchActive: boolean = false;
-  searchValue: string = '';
+  searchActive = false;
+  searchValue = '';
   searchFocusEventEmitter = new EventEmitter<boolean>();
   users: User[] = [];
   createUserDialogRef: MdDialogRef<UserCreateDialogComponent>;
   loading = true;
-  
+
   constructor(
     private apiService: ApiService,
     public dialog: MdDialog,
@@ -34,7 +34,7 @@ export class UsersComponent implements OnInit {
 
     this.createUserDialogRef.afterClosed().subscribe(result => {
       this.createUserDialogRef = undefined;
-    })
+    });
   }
 
   toggleSearch() {
@@ -42,28 +42,31 @@ export class UsersComponent implements OnInit {
     if (this.searchActive) {
       setTimeout(() => { // HACK
         this.searchFocusEventEmitter.emit(true);
-      }, 0)
-    } else
+      }, 0);
+    } else {
       this.searchValue = '';
+    }
   }
 
   private sortUsers(users: User[]): User[] {
     return users.sort((user1: User, user2: User) => {
-      let name1 = user1.name.toLowerCase(), name2 = user2.name.toLowerCase()
-      if (name1 < name2)
-        return -1
-      if (name1 > name2)
-        return 1
-      return 0
-    })
+      const name1 = user1.name.toLowerCase();
+      const name2 = user2.name.toLowerCase();
+      if (name1 < name2) {
+        return -1;
+      } else if (name1 > name2) {
+        return 1;
+      }
+      return 0;
+    });
   }
 
   private getUsers(): void {
     this.loading = true;
     this.apiService.getUsers().subscribe(
       users => {
-        users = this.sortUsers(users)
-        this.users = users
+        users = this.sortUsers(users);
+        this.users = users;
         this.loading = false;
       },
       err => {

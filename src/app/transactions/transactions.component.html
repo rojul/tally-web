@@ -4,7 +4,7 @@
             <md-card-title class="alignleft">Transaktionen</md-card-title>
             <md-card-title class="alignright">
                 Gesamt:
-                <euro [value]="balance"></euro>
+                <app-euro [value]="balance"></app-euro>
             </md-card-title>
             <div style="clear: both;"></div>
             <md-card-content>
@@ -21,15 +21,15 @@
                             {{ (transaction.created | amFromUnix) | amDateFormat:'DD.MM.YYYY HH:mm:ss'}}
                         </td>
                         <td class="right">
-                            <euro [value]="transaction.before"></euro>
+                            <app-euro [value]="transaction.before"></app-euro>
                         </td>
                         <td class="right">
-                            <euro [value]="transaction.difference" [sign]="true"></euro>
+                            <app-euro [value]="transaction.value" [sign]="true"></app-euro>
                         </td>
                         <td class="right">
-                            <euro [value]="transaction.after"></euro>
+                            <app-euro [value]="transaction.after"></app-euro>
                         </td>
-                        <td class="right material-icons delete-icon" (click)="deleteTransaction(transaction.id)">
+                        <td class="right material-icons delete-icon" (click)="openRemoveTransactionDialog(transaction)">
                             delete
                         </td>
                     </tr>
@@ -39,8 +39,10 @@
                         </td>
                     </tr>
                 </table>
-                <button *ngIf="!allLoaded && !loading" md-button (click)="getTransactions()">MEHR ANZEIGEN</button>
             </md-card-content>
+            <md-card-actions align="end">
+                <button md-button *ngIf="!allLoaded && !loading" (click)="getTransactions()">MEHR ANZEIGEN</button>
+            </md-card-actions>
         </md-card>
     </div>
 </app-nav>

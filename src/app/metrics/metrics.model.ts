@@ -1,4 +1,4 @@
-import { MetricsDate } from './metrics-date.model'
+import { MetricsDate } from './metrics-date.model';
 
 export class Metrics {
   transactions: number;

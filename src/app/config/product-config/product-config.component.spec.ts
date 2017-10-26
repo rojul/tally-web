@@ -5,7 +5,7 @@ import { ProductConfigComponent } from './product-config.component';
 
 describe('Component: ProductConfig', () => {
   it('should create an instance', () => {
-    let component = new ProductConfigComponent();
+    const component = new ProductConfigComponent();
     expect(component).toBeTruthy();
   });
 });

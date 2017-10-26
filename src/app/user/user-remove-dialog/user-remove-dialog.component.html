@@ -1,10 +1,10 @@
 <div class="dialog">
-    <md-card-title>Benutzer wirklich löschen?</md-card-title>
+    <md-card-title>"{{ wallet.name }}" wirklich löschen?</md-card-title>
     <md-card-content>
         <br>
     </md-card-content>
     <md-card-actions align="end">
-        <button md-button color="primary" (click)="dialogRef.close()">ABBRECHEN</button>
+        <button md-button color="primary" md-dialog-close>ABBRECHEN</button>
         <button md-raised-button color="accent" (click)="clickOk()">LÖSCHEN</button>
     </md-card-actions>
 </div>

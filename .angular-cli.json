@@ -21,7 +21,8 @@
       "styles": [
         "styles.scss",
         "../node_modules/material-design-icons/iconfont/material-icons.css",
-        "../node_modules/roboto-fontface/css/roboto/sass/roboto-fontface.scss"
+        "../node_modules/roboto-fontface/css/roboto/sass/roboto-fontface-regular.scss",
+        "../node_modules/roboto-fontface/css/roboto/sass/roboto-fontface-medium.scss"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

@@ -5,7 +5,7 @@ import { ChargeConfigComponent } from './charge-config.component';
 
 describe('Component: ChargeConfig', () => {
   it('should create an instance', () => {
-    let component = new ChargeConfigComponent();
+    const component = new ChargeConfigComponent();
     expect(component).toBeTruthy();
   });
 });

@@ -5,7 +5,7 @@ import { UserRemoveDialogComponent } from './user-remove-dialog.component';
 
 describe('Component: UserRemoveDialog', () => {
   it('should create an instance', () => {
-    let component = new UserRemoveDialogComponent();
+    const component = new UserRemoveDialogComponent();
     expect(component).toBeTruthy();
   });
 });

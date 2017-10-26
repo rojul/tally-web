@@ -22,13 +22,14 @@ export class UserCreateDialogComponent implements OnInit {
   }
 
   clickOk() {
-    if (this.name)
-      return this.createUser(this.name)
+    if (this.name) {
+      return this.createUser(this.name);
+    }
   }
 
   private createUser(name: string) {
     this.apiService.createUser(name).subscribe(id => {
-      this.dialogRef.close()
+      this.dialogRef.close();
       this.router.navigate(['/users', id]);
     });
   }

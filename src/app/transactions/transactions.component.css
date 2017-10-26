@@ -6,6 +6,10 @@ md-card-title {
     margin-top: 0 !important;
 }
 
+th {
+    font-weight: 500;
+}
+
 th,
 td {
     text-align: left;

@@ -5,7 +5,7 @@ import { TransactionsComponent } from './transactions.component';
 
 describe('Component: Transactions', () => {
   it('should create an instance', () => {
-    let component = new TransactionsComponent();
+    const component = new TransactionsComponent();
     expect(component).toBeTruthy();
   });
 });

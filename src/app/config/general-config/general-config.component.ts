@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { ApiService } from '../../api.service';
 
@@ -7,18 +7,23 @@ import { ApiService } from '../../api.service';
   templateUrl: './general-config.component.html',
   styleUrls: ['./general-config.component.css']
 })
-export class GeneralConfigComponent implements OnInit {
+export class GeneralConfigComponent implements OnInit, OnDestroy {
 
   loading = true;
   config = {
     title: '',
-    theme: ''
-  }
+    theme: '',
+    funChanceToWin: 0
+  };
   savedConfig = {};
-  themes = [
-    {id: 'default', name: 'Kaffee Braun'},
-    {id: 'kos', name: 'KOS Blau'}
-  ];
+  themes = [{
+    id: 'default',
+    name: 'Kaffee Braun'
+  }, {
+    id: 'kos',
+    name: 'KOS Blau'
+  }];
+  config$;
 
   constructor(
     private apiService: ApiService
@@ -29,17 +34,17 @@ export class GeneralConfigComponent implements OnInit {
   }
 
   cancel() {
-    this.getConfig()
+    this.getConfig();
   }
 
   save() {
-    let config = this.cloneConfig();
+    const config = this.cloneConfig();
     config.title = config.title.trim();
     if (config.title === '') {
       config.title = null;
     }
 
-    for (let key of Object.keys(config)) {
+    for (const key of Object.keys(config)) {
       if (config[key] === this.savedConfig[key]) {
         delete config[key];
       }
@@ -50,11 +55,11 @@ export class GeneralConfigComponent implements OnInit {
       this.getConfig();
     }).catch(err => {
       this.loading = false;
-    })
+    });
   }
 
   isChanged() {
-    for (let key of Object.keys(this.config)) {
+    for (const key of Object.keys(this.config)) {
       if (this.config[key] !== this.savedConfig[key]) {
         return true;
       }
@@ -62,9 +67,19 @@ export class GeneralConfigComponent implements OnInit {
     return false;
   }
 
+  getFunChanceToWinSubtitle() {
+    const funChanceToWin = Number(this.config.funChanceToWin);
+    if (funChanceToWin !== NaN && funChanceToWin !== 0) {
+      const percent = 1 / this.config.funChanceToWin * 100;
+      return (percent === 100 ? 100 : percent.toPrecision(2)) + '%';
+    } else {
+      return 'keine';
+    }
+  }
+
   private cloneConfig(): any {
-    let config = {};
-    for (let key of Object.keys(this.config)) {
+    const config = {};
+    for (const key of Object.keys(this.config)) {
       config[key] = this.config[key];
     }
     return config;
@@ -72,15 +87,20 @@ export class GeneralConfigComponent implements OnInit {
 
   private getConfig() {
     this.loading = true;
-    this.apiService.getConfig().subscribe(config => {
+    this.config$ = this.apiService.getConfig(true).subscribe(config => {
       this.config.title = config.title;
       this.config.theme = config.theme;
+      this.config.funChanceToWin = config.funChanceToWin;
 
       this.savedConfig = this.cloneConfig();
       this.loading = false;
     }, err => {
       this.loading = false;
-    })
+    });
+  }
+
+  ngOnDestroy() {
+    this.config$.unsubscribe();
   }
 
 }

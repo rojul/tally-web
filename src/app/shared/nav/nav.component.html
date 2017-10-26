@@ -1,3 +1,4 @@
+<div [class]="config.theme + '-theme'">
 <md-sidenav-container fullscreen>
     <md-sidenav #sidenav class="main-sidenav">
         <md-nav-list>
@@ -16,7 +17,7 @@
         <button *ngIf="backTo" md-icon-button [routerLink]="backTo">
             <md-icon>arrow_back</md-icon>
         </button>
-        <span>Tally</span>
+        <span>{{config.title}}</span>
         <span class="example-fill-remaining-space"></span>
         <ng-content select="[toolbar]"></ng-content>
     </md-toolbar>
@@ -24,3 +25,4 @@
 
     <ng-content></ng-content>
 </md-sidenav-container>
+</div>

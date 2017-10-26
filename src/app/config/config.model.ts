@@ -1,15 +1,16 @@
-class minMax {
+class MinMax {
     min: number;
     max: number;
 }
 
 export class Config {
-    recharge :number[];
-    userNameLength: minMax;
+    recharge: number[];
+    userNameLength: MinMax;
     productNameLengthMax: number;
-    transactionValue: minMax;
+    transactionValue: MinMax;
     transactionsLimit: number;
     title: string;
     theme: string;
     transactionMaxValue: number;
+    funChanceToWin: number;
 }

@@ -1,4 +1,6 @@
 @import 'app-theme.scss';
+@import './app/user/user-fun-free-dialog/rainbow-backdrop.scss';
+
 body {
     font-family: 'Roboto', sans-serif;
     -webkit-user-select: none;
@@ -23,4 +25,8 @@ fieldset {
 
 .dialog md-card-actions {
     margin-bottom: -20px;
+}
+
+.mat-sidenav-content {
+    transform: none !important;
 }

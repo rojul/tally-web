@@ -5,7 +5,7 @@ import { ConfigComponent } from './config.component';
 
 describe('Component: Config', () => {
   it('should create an instance', () => {
-    let component = new ConfigComponent();
+    const component = new ConfigComponent();
     expect(component).toBeTruthy();
   });
 });

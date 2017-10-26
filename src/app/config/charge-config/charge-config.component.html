@@ -3,7 +3,7 @@
         <md-card-title>Aufladen</md-card-title>
         <md-card-content>
             <div *ngFor="let charge of charges">
-                <euro-input [(ngModel)]="charge.value" placeholder="Betrag"></euro-input>
+                <app-euro-input [(ngModel)]="charge.value" placeholder="Betrag"></app-euro-input>
                 <button md-icon-button (click)="remove(charge)"><md-icon>delete</md-icon></button>
             </div>
             <button md-icon-button (click)="create()"><md-icon>add</md-icon></button>

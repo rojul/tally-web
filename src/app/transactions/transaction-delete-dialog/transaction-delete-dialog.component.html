@@ -1,0 +1,10 @@
+<div class="dialog">
+    <md-card-title>Transaktion löschen?</md-card-title>
+    <md-card-content>
+        Soll die Transaktion vom {{ (transaction.created | amFromUnix) | amDateFormat:'DD.MM.YYYY HH:mm:ss'}} über <app-euro [value]="transaction.value" [sign]="true" [colored]="false"></app-euro> gelöscht werden
+    </md-card-content>
+    <md-card-actions align="end">
+        <button md-button color="primary" md-dialog-close>ABBRECHEN</button>
+        <button md-raised-button color="accent" (click)="clickOk()">LÖSCHEN</button>
+    </md-card-actions>
+</div>
