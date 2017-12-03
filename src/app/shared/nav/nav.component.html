@@ -1,28 +1,28 @@
-<div [class]="config.theme + '-theme'">
-<md-sidenav-container fullscreen>
-    <md-sidenav #sidenav class="main-sidenav">
-        <md-nav-list>
-            <a md-list-item *ngFor="let view of views" [routerLink]="['/' + view.path]" (click)="sidenav.close()">
-                <md-icon md-list-icon>{{view.icon}}</md-icon>
-                <span md-line>{{view.name}}</span>
-                <span md-line class="secondary">{{view.description}}</span>
+<div>
+<mat-sidenav-container fullscreen>
+    <mat-sidenav #sidenav class="main-sidenav">
+        <mat-nav-list>
+            <a mat-list-item *ngFor="let view of views" [routerLink]="['/' + view.path]" (click)="sidenav.close()">
+                <mat-icon mat-list-icon>{{ view.icon }}</mat-icon>
+                <span mat-line>{{ view.name }}</span>
+                <span mat-line class="secondary">{{ view.description }}</span>
             </a>
-        </md-nav-list>
-    </md-sidenav>
+        </mat-nav-list>
+    </mat-sidenav>
 
-    <md-toolbar color="primary">
-        <button *ngIf="!backTo" md-icon-button (click)="sidenav.open()">
-            <md-icon>menu</md-icon>
+    <mat-toolbar color="primary">
+        <button *ngIf="!backTo" mat-icon-button (click)="sidenav.open()">
+            <mat-icon>menu</mat-icon>
         </button>
-        <button *ngIf="backTo" md-icon-button [routerLink]="backTo">
-            <md-icon>arrow_back</md-icon>
+        <button *ngIf="backTo" mat-icon-button [routerLink]="backTo">
+            <mat-icon>arrow_back</mat-icon>
         </button>
-        <span>{{config.title}}</span>
-        <span class="example-fill-remaining-space"></span>
+        <span>{{ config.title }}</span>
+        <span class="fill-remaining-space"></span>
         <ng-content select="[toolbar]"></ng-content>
-    </md-toolbar>
-    <md-progress-bar mode="indeterminate" *ngIf="loadingShowing"></md-progress-bar>
+    </mat-toolbar>
+    <mat-progress-bar mode="indeterminate" *ngIf="loadingShowing"></mat-progress-bar>
 
     <ng-content></ng-content>
-</md-sidenav-container>
+</mat-sidenav-container>
 </div>

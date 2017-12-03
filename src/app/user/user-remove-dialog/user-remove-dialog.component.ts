@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../../api.service';
@@ -13,8 +13,8 @@ import { Wallet } from '../wallet.model';
 export class UserRemoveDialogComponent implements OnInit {
 
   constructor(
-    @Inject(MD_DIALOG_DATA) public wallet: Wallet,
-    public dialogRef: MdDialogRef<UserRemoveDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public wallet: Wallet,
+    public dialogRef: MatDialogRef<UserRemoveDialogComponent>,
     private router: Router,
     private apiService: ApiService,
   ) { }

@@ -1,36 +1,36 @@
 <app-nav [loading]="loading">
     <div toolbar>
-        <button md-icon-button (click)="toggleSearch()">
-            <md-icon>search</md-icon>
+        <button mat-icon-button (click)="toggleSearch()">
+            <mat-icon>search</mat-icon>
         </button>
     </div>
 
-    <md-toolbar class="search-bar" *ngIf="searchActive" color="primary">
-        <md-input-container class="demo-fill-remaining" >
-            <input mdInput [(ngModel)]="searchValue" [appFocus]="searchFocusEventEmitter">
-        </md-input-container>
-        <button md-icon-button (click)="toggleSearch()">
-            <md-icon>clear</md-icon>
+    <mat-toolbar class="search-bar" *ngIf="searchActive" color="primary">
+        <mat-input-container class="fill-remaining" >
+            <input matInput [(ngModel)]="searchValue" [appFocus]="searchFocusEventEmitter">
+        </mat-input-container>
+        <button mat-icon-button (click)="toggleSearch()">
+            <mat-icon>clear</mat-icon>
         </button>
-    </md-toolbar>
+    </mat-toolbar>
 
     <div class="user-container">
         <div class="stretch">
-            <md-card *ngFor="let user of users" [hidden]="!user.name.toLowerCase().includes(searchValue.toLowerCase())" [routerLink]="['/users', user.id]">
-                <md-card-title>{{user.name}}</md-card-title>
-                <md-card-subtitle>
+            <mat-card *ngFor="let user of users" [hidden]="!user.name.toLowerCase().includes(searchValue.toLowerCase())" [routerLink]="['/users', user.id]">
+                <mat-card-title>{{ user.name }}</mat-card-title>
+                <mat-card-subtitle>
                     <div>
                         <app-euro [value]="user.balance"></app-euro>
                     </div>
                     <div>
                         <time>{{ (user.active | amFromUnix) | amTimeAgo }}</time>
                     </div>
-                </md-card-subtitle>
-            </md-card>
+                </mat-card-subtitle>
+            </mat-card>
         </div>
     </div>
 
-    <button md-fab (click)="openCreateUserDialog()" [disabled]="createUserDialogRef">
-        <md-icon>person_add</md-icon>
+    <button mat-fab (click)="openCreateUserDialog()" [disabled]="createUserDialogRef">
+        <mat-icon>person_add</mat-icon>
     </button>
 </app-nav>

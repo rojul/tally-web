@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, ApplicationRef, APP_INITIALIZER } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { MaterialModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDialogModule, MatIconModule, MatInputModule, MatListModule, MatOptionModule,
+  MatProgressBarModule, MatSelectModule, MatSidenavModule, MatSnackBarModule, MatToolbarModule, } from '@angular/material';
 import { MomentModule } from 'angular2-moment';
 import * as moment from 'moment/moment.js';
 
@@ -51,7 +52,18 @@ import { ApiService } from './api.service';
     FormsModule,
     routing,
     HttpModule,
-    MaterialModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatOptionModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSnackBarModule,
+    MatToolbarModule,
     MomentModule,
     ChartsModule,
     NgIdleModule.forRoot(),

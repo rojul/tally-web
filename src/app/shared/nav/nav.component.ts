@@ -1,6 +1,6 @@
-import { Component, OnInit, OnDestroy, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy, OnChanges, Input, Inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { OverlayContainer } from '@angular/material';
+import { DOCUMENT } from '@angular/platform-browser';
 
 import { View } from './view.model';
 import { ApiService } from '../../api.service';
@@ -36,13 +36,12 @@ export class NavComponent implements OnInit, OnDestroy, OnChanges {
   constructor(
     private router: Router,
     private apiService: ApiService,
-    private overlayContainer: OverlayContainer
+    @Inject(DOCUMENT) private document: Document,
   ) {
     this.setTheme();
   }
 
   ngOnInit() {
-
     this.config$ = this.apiService.getConfig().subscribe(
       config => {
         this.config = config;
@@ -53,7 +52,7 @@ export class NavComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   setTheme() {
-    this.overlayContainer.themeClass = this.config.theme + '-theme';
+    this.document.body.className = this.config.theme + '-theme';
   }
 
   ngOnChanges(changes: any) {

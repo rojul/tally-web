@@ -1,4 +1,4 @@
-<md-input-container [color]="intValue() ? '' : 'warn'" mdSuffix="&nbsp;€">
-    <input mdInput [(ngModel)]="value" (blur)="onBlur()" [appFocus]="elemFocusEventEmitter" [placeholder]="placeholder">
-    <div mdSuffix>&nbsp;€</div>
-</md-input-container>
+<mat-input-container [color]="intValue() ? '' : 'warn'" matSuffix="&nbsp;€">
+    <input matInput [(ngModel)]="value" (blur)="onBlur()" [appFocus]="elemFocusEventEmitter" [placeholder]="placeholder">
+    <div matSuffix>&nbsp;€</div>
+</mat-input-container>

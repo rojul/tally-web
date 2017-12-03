@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdDialogRef } from '@angular/material';
+import { MatDialogRef } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../../api.service';
@@ -13,7 +13,7 @@ export class UserCreateDialogComponent implements OnInit {
   name: string;
 
   constructor(
-    public dialogRef: MdDialogRef<UserCreateDialogComponent>,
+    public dialogRef: MatDialogRef<UserCreateDialogComponent>,
     private router: Router,
     private apiService: ApiService
   ) { }

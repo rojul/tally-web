@@ -1,13 +1,13 @@
 <app-nav [backTo]="['../']" [loading]="loading">
     <div class="container">
-        <md-card>
-            <md-card-title class="alignleft">Transaktionen</md-card-title>
-            <md-card-title class="alignright">
+        <mat-card>
+            <mat-card-title class="alignleft">Transaktionen</mat-card-title>
+            <mat-card-title class="alignright">
                 Gesamt:
                 <app-euro [value]="balance"></app-euro>
-            </md-card-title>
+            </mat-card-title>
             <div style="clear: both;"></div>
-            <md-card-content>
+            <mat-card-content>
                 <table>
                     <tr>
                         <th>Zeit</th>
@@ -18,7 +18,7 @@
                     </tr>
                     <tr *ngFor="let transaction of transactions">
                         <td>
-                            {{ (transaction.created | amFromUnix) | amDateFormat:'DD.MM.YYYY HH:mm:ss'}}
+                            {{ (transaction.created | amFromUnix) | amDateFormat:'DD.MM.YYYY HH:mm:ss' }}
                         </td>
                         <td class="right">
                             <app-euro [value]="transaction.before"></app-euro>
@@ -35,14 +35,14 @@
                     </tr>
                     <tr *ngIf="transactions.length === 0 && !loading">
                         <td colspan="5">
-                            <md-card-subtitle align="center">Noch keine Transaktionen</md-card-subtitle>
+                            <mat-card-subtitle align="center">Noch keine Transaktionen</mat-card-subtitle>
                         </td>
                     </tr>
                 </table>
-            </md-card-content>
-            <md-card-actions align="end">
-                <button md-button *ngIf="!allLoaded && !loading" (click)="getTransactions()">MEHR ANZEIGEN</button>
-            </md-card-actions>
-        </md-card>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button *ngIf="!allLoaded && !loading" (click)="getTransactions()">MEHR ANZEIGEN</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 </app-nav>

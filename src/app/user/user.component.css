@@ -1,4 +1,4 @@
-md-card {
+mat-card {
     margin: 6px;
 }
 
@@ -74,6 +74,6 @@ md-card {
     float: right;
 }
 
-md-card-title {
+mat-card-title {
     margin-top: 0 !important;
 }

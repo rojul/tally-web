@@ -1,6 +1,6 @@
 <app-nav [backTo]="['/']" [loading]="loading">
     <div class="container">
-        <md-card class="metrics-card" *ngIf="metrics">
+        <mat-card class="metrics-card" *ngIf="metrics">
             <div class="metric">
                 <div class="type">System Stand</div>
                 <div class="value">
@@ -9,17 +9,17 @@
             </div>
             <div class="metric">
                 <div class="type">Nutzer</div>
-                <div class="value">{{metrics.users}}</div>
+                <div class="value">{{ metrics.users }}</div>
             </div>
             <div class="metric">
                 <div class="type">Transaktionen</div>
-                <div class="value">{{metrics.transactions}}</div>
+                <div class="value">{{ metrics.transactions }}</div>
             </div>
-        </md-card>
+        </mat-card>
 
-        <md-card *ngFor="let chart of charts">
-            <md-card-title>{{chart.title}}</md-card-title>
+        <mat-card *ngFor="let chart of charts">
+            <mat-card-title>{{ chart.title }}</mat-card-title>
             <canvas baseChart [colors]="chart.colors" [datasets]="chart.datasets" [labels]="chartLabels" [options]="chartOptions" [legend]="false" chartType="bar"></canvas>
-        </md-card>
+        </mat-card>
     </div>
 </app-nav>

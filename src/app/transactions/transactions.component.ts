@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MdDialog, MdDialogRef } from '@angular/material';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 import { Transaction } from './transaction.model';
 import { ApiService } from '../api.service';
@@ -24,12 +24,12 @@ export class TransactionsComponent implements OnInit, OnDestroy {
   beforeId: number;
   allLoaded = false;
   loading = false;
-  deleteTransactionDialogRef: MdDialogRef<TransactionDeleteDialogComponent>;
+  deleteTransactionDialogRef: MatDialogRef<TransactionDeleteDialogComponent>;
 
   constructor(
     private route: ActivatedRoute,
     private apiService: ApiService,
-    public dialog: MdDialog
+    public dialog: MatDialog
   ) { }
 
   ngOnInit() {

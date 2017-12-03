@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MD_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA } from '@angular/material';
 
 import { Product } from '../product.model';
 
@@ -11,7 +11,7 @@ import { Product } from '../product.model';
 export class UserFunFreeDialogComponent implements OnInit {
 
   constructor(
-    @Inject(MD_DIALOG_DATA) public product: Product
+    @Inject(MAT_DIALOG_DATA) public product: Product
   ) { }
 
   ngOnInit() {

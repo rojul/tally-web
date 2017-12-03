@@ -1,11 +1,11 @@
-import { browser, element, by } from 'protractor';
+import { browser, by, element } from 'protractor';
 
-export class TallyWebPage {
+export class AppPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getTitleText() {
+    return element(by.css('mat-toolbar > span')).getText();
   }
 }

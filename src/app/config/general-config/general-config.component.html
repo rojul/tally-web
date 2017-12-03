@@ -1,31 +1,31 @@
 <fieldset [disabled]="loading">
-    <md-card>
-        <md-card-title>Allgemeine Einstellungen</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title>Allgemeine Einstellungen</mat-card-title>
+        <mat-card-content>
             <div>
-                <md-input-container>
-                    <input mdInput [(ngModel)]="config.title" placeholder="Titel">
-                </md-input-container>
+                <mat-input-container>
+                    <input matInput [(ngModel)]="config.title" placeholder="Titel">
+                </mat-input-container>
             </div>
             <div>
                 <p>Theme:</p>
-                <md-select [(ngModel)]="config.theme">
-                    <md-option *ngFor="let theme of themes" [value]="theme.id">{{ theme.name }}</md-option>
-                </md-select>
+                <mat-select [(ngModel)]="config.theme">
+                    <mat-option *ngFor="let theme of themes" [value]="theme.id">{{ theme.name }}</mat-option>
+                </mat-select>
             </div>
             <br>
             <div>
-                <p>Gewinnchance bei allen Produkten mit <md-icon>sentiment_very_satisfied</md-icon>:</p>
-                <md-input-container>
-                    <div mdPrefix>1:</div>
-                    <input mdInput [(ngModel)]="config.funChanceToWin" placeholder="Gewinnchance" type="number" min="0" max="10000" step="1">
-                </md-input-container>
+                <p>Gewinnchance bei allen Produkten mit <mat-icon>sentiment_very_satisfied</mat-icon>:</p>
+                <mat-input-container>
+                    <div matPrefix>1:</div>
+                    <input matInput [(ngModel)]="config.funChanceToWin" placeholder="Gewinnchance" type="number" min="0" max="10000" step="1">
+                </mat-input-container>
                 <div><small>{{ getFunChanceToWinSubtitle() }} Chance zu gewinnen</small></div>
             </div>
-        </md-card-content>
-        <md-card-actions align="end">
-            <button md-button color="primary" (click)="cancel()">ABBRECHEN</button>
-            <button md-raised-button color="accent" (click)="save()" [disabled]="!isChanged()">SPEICHERN</button>
-        </md-card-actions>
-    </md-card>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button color="primary" (click)="cancel()">ABBRECHEN</button>
+            <button mat-raised-button color="accent" (click)="save()" [disabled]="!isChanged()">SPEICHERN</button>
+        </mat-card-actions>
+    </mat-card>
 </fieldset>

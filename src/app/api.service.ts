@@ -1,10 +1,11 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, URLSearchParams } from '@angular/http';
-import { Observable, Subject, ReplaySubject } from 'rxjs/Rx';
-import { MdSnackBar } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/publishReplay';
-import 'rxjs/add/operator/publishLast';
+import { MatSnackBar } from '@angular/material';
 
 import { environment } from '../environments/environment';
 import { User } from './users';
@@ -17,12 +18,12 @@ import { Metrics } from './metrics';
 export class ApiService {
 
   private url = environment.apiUrl;
-  private configSubject = new ReplaySubject(1);
+  private configSubject = new ReplaySubject<Config>(1);
   private configRequest: Observable<Config>;
 
   constructor(
     private http: Http,
-    public snackBar: MdSnackBar
+    public snackBar: MatSnackBar
   ) { }
 
   getConfig(refresh = false): Observable<Config> {

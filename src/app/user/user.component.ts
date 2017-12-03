@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewContainerRef, ViewChild, EventEmitter } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { MdDialog, MdDialogConfig, MdDialogRef, MdInputDirective } from '@angular/material';
+import { MatDialog, MatDialogConfig, MatDialogRef } from '@angular/material';
 
 import { Transaction, TransactionDeleteDialogComponent } from '../transactions';
 import { Wallet } from './wallet.model';
@@ -18,12 +18,12 @@ import { UserFunFreeDialogComponent } from './user-fun-free-dialog';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit, OnDestroy {
-  @ViewChild('customRechargeInput') customRechargeInput: MdInputDirective;
+  @ViewChild('customRechargeInput') customRechargeInput: any;
 
-  removeUserDialogRef: MdDialogRef<UserRemoveDialogComponent>;
-  editUserDialogRef: MdDialogRef<UserEditDialogComponent>;
-  deleteTransactionDialogRef: MdDialogRef<TransactionDeleteDialogComponent>;
-  funFreeDialogRef: MdDialogRef<UserFunFreeDialogComponent>;
+  removeUserDialogRef: MatDialogRef<UserRemoveDialogComponent>;
+  editUserDialogRef: MatDialogRef<UserEditDialogComponent>;
+  deleteTransactionDialogRef: MatDialogRef<TransactionDeleteDialogComponent>;
+  funFreeDialogRef: MatDialogRef<UserFunFreeDialogComponent>;
   wallet: Wallet;
   products: Product[] = [];
   chargeDefaults: number[] = [];
@@ -39,7 +39,7 @@ export class UserComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private apiService: ApiService,
-    public dialog: MdDialog,
+    public dialog: MatDialog,
     public viewContainerRef: ViewContainerRef
   ) { }
 

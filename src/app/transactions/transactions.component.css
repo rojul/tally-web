@@ -2,7 +2,7 @@ table {
     width: 100%;
 }
 
-md-card-title {
+mat-card-title {
     margin-top: 0 !important;
 }
 
@@ -23,7 +23,7 @@ td.right {
     padding: 6px;
 }
 
-md-card {
+mat-card {
     margin: 12px;
 }
 
@@ -35,7 +35,7 @@ md-card {
     float: right;
 }
 
-md-card {}
+mat-card {}
 
 .container {
     margin: 0 auto;

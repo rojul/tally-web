@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
 
 import { ApiService } from '../../api.service';
@@ -13,8 +13,8 @@ import { Transaction } from '../transaction.model';
 export class TransactionDeleteDialogComponent implements OnInit {
 
   constructor(
-    @Inject(MD_DIALOG_DATA) public transaction: Transaction,
-    public dialogRef: MdDialogRef<TransactionDeleteDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public transaction: Transaction,
+    public dialogRef: MatDialogRef<TransactionDeleteDialogComponent>,
     private router: Router,
     private apiService: ApiService
   ) { }

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef, EventEmitter } from '@angular/core';
-import { MdDialogRef, MdDialog } from '@angular/material';
+import { MatDialogRef, MatDialog } from '@angular/material';
 
 import { User } from './user.model';
 import { ApiService } from '../api.service';
@@ -17,12 +17,12 @@ export class UsersComponent implements OnInit {
   searchValue = '';
   searchFocusEventEmitter = new EventEmitter<boolean>();
   users: User[] = [];
-  createUserDialogRef: MdDialogRef<UserCreateDialogComponent>;
+  createUserDialogRef: MatDialogRef<UserCreateDialogComponent>;
   loading = true;
 
   constructor(
     private apiService: ApiService,
-    public dialog: MdDialog,
+    public dialog: MatDialog,
   ) { }
 
   ngOnInit() {

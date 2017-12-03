@@ -1,14 +1,14 @@
-import { TallyWebPage } from './app.po';
+import { AppPage } from './app.po';
 
 describe('tally-web App', () => {
-  let page: TallyWebPage;
+  let page: AppPage;
 
   beforeEach(() => {
-    page = new TallyWebPage();
+    page = new AppPage();
   });
 
-  it('should display message saying app works', () => {
+  it('should display title text', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getTitleText()).toEqual('Tally');
   });
 });

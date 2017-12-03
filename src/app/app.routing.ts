@@ -10,19 +10,24 @@ import { ConfigComponent } from './config';
 
 const appRoutes: Routes = [{
   path: '',
-  component: UsersComponent
+  component: UsersComponent,
+  pathMatch: 'full'
 }, {
   path: 'users/:userId',
-  component: UserComponent
+  component: UserComponent,
+  pathMatch: 'full'
 }, {
   path: 'users/:userId/transactions',
-  component: TransactionsComponent
+  component: TransactionsComponent,
+  pathMatch: 'full'
 }, {
   path: 'metrics',
-  component: MetricsComponent
+  component: MetricsComponent,
+  pathMatch: 'full'
 }, {
   path: 'config',
-  component: ConfigComponent
+  component: ConfigComponent,
+  pathMatch: 'full'
 }, {
   path: '**',
   component: PageNotFoundComponent

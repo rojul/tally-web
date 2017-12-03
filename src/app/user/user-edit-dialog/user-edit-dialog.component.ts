@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MdDialogRef, MD_DIALOG_DATA } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { ApiService } from '../../api.service';
 import { Wallet } from '../wallet.model';
@@ -13,8 +13,8 @@ export class UserEditDialogComponent implements OnInit {
   name = '';
 
   constructor(
-    @Inject(MD_DIALOG_DATA) public wallet: Wallet,
-    public dialogRef: MdDialogRef<UserEditDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public wallet: Wallet,
+    public dialogRef: MatDialogRef<UserEditDialogComponent>,
     private apiService: ApiService
   ) {
     this.name = wallet.name;

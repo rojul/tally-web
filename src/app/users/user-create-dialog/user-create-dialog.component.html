@@ -1,10 +1,10 @@
 <div class="dialog">
-    <md-card-title>Neuen Nutzer anlegen</md-card-title>
-    <md-card-content>
+    <mat-card-title>Neuen Nutzer anlegen</mat-card-title>
+    <mat-card-content>
         <app-name-input [(ngModel)]="name" [length]="{ min: 3, max: 20 }"></app-name-input>
-    </md-card-content>
-    <md-card-actions align="end">
-        <button md-button color="primary" (click)="dialogRef.close()">ABBRECHEN</button>
-        <button md-raised-button color="accent" [disabled]="!name" (click)="clickOk()">ERSTELLEN</button>
-    </md-card-actions>
+    </mat-card-content>
+    <mat-card-actions align="end">
+        <button mat-button color="primary" (click)="dialogRef.close()">ABBRECHEN</button>
+        <button mat-raised-button color="accent" [disabled]="!name" (click)="clickOk()">ERSTELLEN</button>
+    </mat-card-actions>
 </div>

@@ -1,18 +1,18 @@
 <fieldset [disabled]="loading">
-    <md-card>
-        <md-card-title>Produkte</md-card-title>
-        <md-card-content>
+    <mat-card>
+        <mat-card-title>Produkte</mat-card-title>
+        <mat-card-content>
             <div *ngFor="let product of products">
                 <app-name-input [(ngModel)]="product.name" [length]="{ min: 1, max: 45 }"></app-name-input>
                 <app-euro-input [(ngModel)]="product.price" placeholder="Preis"></app-euro-input>
-                <button md-icon-button (click)="product.fun = !product.fun"><md-icon [color]="product.fun ? 'primary' : ''">sentiment_{{product.fun ? 'very_' : ''}}satisfied</md-icon></button>
-                <button md-icon-button (click)="remove(product)"><md-icon>delete</md-icon></button>
+                <button mat-icon-button (click)="product.fun = !product.fun"><mat-icon [color]="product.fun ? 'primary' : ''">sentiment_{{ product.fun ? 'very_' : '' }}satisfied</mat-icon></button>
+                <button mat-icon-button (click)="remove(product)"><mat-icon>delete</mat-icon></button>
             </div>
-            <button md-icon-button (click)="create()"><md-icon>add</md-icon></button>
-        </md-card-content>
-        <md-card-actions align="end">
-            <button md-button color="primary" (click)="cancel()">ABBRECHEN</button>
-            <button md-raised-button color="accent" (click)="save()" [disabled]="!isValid() || !isChanged()">SPEICHERN</button>
-        </md-card-actions>
-    </md-card>
+            <button mat-icon-button (click)="create()"><mat-icon>add</mat-icon></button>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-button color="primary" (click)="cancel()">ABBRECHEN</button>
+            <button mat-raised-button color="accent" (click)="save()" [disabled]="!isValid() || !isChanged()">SPEICHERN</button>
+        </mat-card-actions>
+    </mat-card>
 </fieldset>

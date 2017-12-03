@@ -1,87 +1,87 @@
 <app-nav [backTo]="['/']" [loading]="loading !== 0">
     <div toolbar>
-        <button md-icon-button (click)="openEditUserDialog()" [disabled]="editUserDialogRef">
-            <md-icon>edit</md-icon>
+        <button mat-icon-button (click)="openEditUserDialog()" [disabled]="editUserDialogRef">
+            <mat-icon>edit</mat-icon>
         </button>
-        <button md-icon-button (click)="openRemoveUserDialog()" [disabled]="removeUserDialogRef">
-            <md-icon>delete</md-icon>
+        <button mat-icon-button (click)="openRemoveUserDialog()" [disabled]="removeUserDialogRef">
+            <mat-icon>delete</mat-icon>
         </button>
     </div>
 
     <div class="wrapper">
 
-        <md-card class="info-card" *ngIf="wallet">
-            <md-card-title class="alignleft">Hallo {{ wallet.name }}</md-card-title>
-            <md-card-title class="alignright">
+        <mat-card class="info-card" *ngIf="wallet">
+            <mat-card-title class="alignleft">Hallo {{ wallet.name }}</mat-card-title>
+            <mat-card-title class="alignright">
                 Gesamt:
                 <app-euro [value]="wallet.balance"></app-euro>
-            </md-card-title>
+            </mat-card-title>
             <div style="clear: both; width: 100%; height: 5px;"></div>
-            <md-card-subtitle style="width: 100%;">
+            <mat-card-subtitle style="width: 100%;">
                 <div>Erstellt
                     <time>{{ (wallet.created | amFromUnix) | amTimeAgo }}</time>
                 </div>
                 <div>Zuletzt aktiv
                     <time>{{ (wallet.active | amFromUnix) | amTimeAgo }}</time>
                 </div>
-            </md-card-subtitle>
-        </md-card>
+            </mat-card-subtitle>
+        </mat-card>
 
         <div class="pay-charge" *ngIf="wallet">
-            <md-card class="pay-card">
-                <md-card-title>Bezahlen</md-card-title>
-                <md-card-content class="pay-wrapper">
-                    <button md-raised-button *ngFor="let product of products" (click)="newTransaction(product)" [disabled]="!orderActive">
-                        <span>{{product.name}}</span>
+            <mat-card class="pay-card">
+                <mat-card-title>Bezahlen</mat-card-title>
+                <mat-card-content class="pay-wrapper">
+                    <button mat-raised-button *ngFor="let product of products" (click)="newTransaction(product)" [disabled]="!orderActive">
+                        <span>{{ product.name }}</span>
                         <app-euro class="secondary" [value]="product.price" [colored]="false"></app-euro>
                     </button>
-                </md-card-content>
-            </md-card>
+                </mat-card-content>
+            </mat-card>
 
-            <md-card class="charge-card" *ngIf="config">
-                <md-card-title>Aufladen</md-card-title>
-                <md-card-content *ngIf="!customChargeShowing" class="charge-wrapper">
-                    <button md-raised-button *ngFor="let value of config.recharge" (click)="charge(value)" [disabled]="!orderActive">
+            <mat-card class="charge-card" *ngIf="config">
+                <mat-card-title>Aufladen</mat-card-title>
+                <mat-card-content *ngIf="!customChargeShowing" class="charge-wrapper">
+                    <button mat-raised-button *ngFor="let value of config.recharge" (click)="charge(value)" [disabled]="!orderActive">
                         <app-euro [value]="value" [colored]="false"></app-euro>
                     </button>
-                    <button md-raised-button (click)="toggleCustomRecharge()" [disabled]="!orderActive">
+                    <button mat-raised-button (click)="toggleCustomRecharge()" [disabled]="!orderActive">
                         <span>?</span>
                     </button>
-                </md-card-content>
-                <md-card-content *ngIf="customChargeShowing">
+                </mat-card-content>
+                <mat-card-content *ngIf="customChargeShowing">
                     <app-euro-input #customRechargeInput [(ngModel)]="customChargeValue" placeholder="Wert"></app-euro-input>
-                </md-card-content>
-                <md-card-actions align="end" *ngIf="customChargeShowing">
-                    <button md-button color="primary" (click)="toggleCustomRecharge()">ABBRECHEN</button>
-                    <button md-raised-button color="accent" [disabled]="!customChargeValue" (click)="customCharge()">OK</button>
-                </md-card-actions>
-            </md-card>
+                </mat-card-content>
+                <mat-card-actions align="end" *ngIf="customChargeShowing">
+                    <button mat-button color="primary" (click)="toggleCustomRecharge()">ABBRECHEN</button>
+                    <button mat-raised-button color="accent" [disabled]="!customChargeValue" (click)="customCharge()">OK</button>
+                </mat-card-actions>
+            </mat-card>
         </div>
 
-        <md-card class="transactions-card" *ngIf="wallet">
-            <md-card-title>
+        <mat-card class="transactions-card" *ngIf="wallet">
+            <mat-card-title>
                 Letzte Transaktionen
-            </md-card-title>
-            <md-card-content>
-                <md-list dense>
-                    <md-list-item *ngFor="let transaction of wallet.transactions">
-                        <h3 md-line>
+            </mat-card-title>
+            <mat-card-content>
+                <mat-list dense>
+                    <mat-list-item *ngFor="let transaction of wallet.transactions">
+                        <h3 mat-line>
                             <app-euro [value]="transaction.value"></app-euro>
                         </h3>
-                        <span md-line class="secondary"><time>{{ (transaction.created | amFromUnix) | amTimeAgo }}</time></span>
-                        <button md-icon-button (click)="openRemoveTransactionDialog(transaction.id)">
-                            <md-icon>delete</md-icon>
+                        <span mat-line class="secondary"><time>{{ (transaction.created | amFromUnix) | amTimeAgo }}</time></span>
+                        <button mat-icon-button (click)="openRemoveTransactionDialog(transaction.id)">
+                            <mat-icon>delete</mat-icon>
                         </button>
-                    </md-list-item>
-                    <md-list-item *ngIf="wallet.transactions.length == 0">
-                        <span md-line class="secondary"><md-card-subtitle>Noch keine Transaktionen</md-card-subtitle></span>
-                    </md-list-item>
-                </md-list>
-            </md-card-content>
-            <md-card-actions align="end">
-                <button md-button [routerLink]="['/users', wallet.id, 'transactions']">MEHR</button>
-            </md-card-actions>
-        </md-card>
+                    </mat-list-item>
+                    <mat-list-item *ngIf="wallet.transactions.length == 0">
+                        <span mat-line class="secondary"><mat-card-subtitle>Noch keine Transaktionen</mat-card-subtitle></span>
+                    </mat-list-item>
+                </mat-list>
+            </mat-card-content>
+            <mat-card-actions align="end">
+                <button mat-button [routerLink]="['/users', wallet.id, 'transactions']">MEHR</button>
+            </mat-card-actions>
+        </mat-card>
     </div>
 </app-nav>
 <app-idle-redirector [fastRedirect]="fastRedirectEventEmitter"></app-idle-redirector>
